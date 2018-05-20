@@ -52,6 +52,7 @@
 		<Unit filename="may2018/petunias/petunias.txt" />
 		<Unit filename="may2018/roses/roses.txt" />
 		<Unit filename="scripts/gallery.js" />
+		<Unit filename="test.html" />
 		<Extensions>
 			<code_completion />
 			<envvars />

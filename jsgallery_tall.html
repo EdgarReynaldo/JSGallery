@@ -35,15 +35,19 @@ img.thumb {
    background-color:#0000FF;
    width:100%;
    object-fit:scale-down;
+   border:0px;
    margin:10px;
+   padding:0px;
    display:block;
 }
 
 img.large {
    margin:0px;
+   border:0px;
    padding:0px;
    width:100%;
    height:100%;
+   background:white;
    object-fit:scale-down;
 }
 
@@ -52,11 +56,12 @@ img.large {
    border:0px;
    padding:0px;
    margin:0px;
+   width:90%;
    height:100%;
 }
 #thumbdiv {
    float:left;
-   width:128px;
+   width:10%;
    height:100%;
    overflow-x:hidden;
    overflow-y:scroll;
@@ -93,7 +98,7 @@ img.large {
 
    var thumbs = document.getElementById("thumbdiv");
 
-   var g = new Gallery(newimg , thumbs , document.getElementById("large_image") , "may2018/petunias/petunias.txt");
+   var g = new Gallery(newimg , thumbs , document.getElementById("large_image") , "may2018/files.txt");
 
    
    var w = getScrollbarWidth(thumbs);
