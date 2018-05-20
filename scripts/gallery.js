@@ -13,14 +13,27 @@ function getScrollbarWidth(el) {
 
 class Thumb {
    constructor(ptype , src , dest , link) {
-      this.thumb = undefined;
       
       this.thumb = ptype.cloneNode(true);
+
+      var vertical_strip = true;
+      
+
+      if (vertical_strip) {
+         this.thumb.style.display = "block";
+         this.thumb.style.maxWidth = "128px";
+         this.thumb.style.width = "100%";
+         this.thumb.style.height = "";
+      } else {
+         this.thumb.style.display = "inline";
+         this.thumb.style.maxHeight = "128px";
+         this.thumb.style.width = "";
+         this.thumb.style.height = "100%";
+      }
+
       this.thumb.src = src;
-      this.thumb.style.display = "inline-block";
+      
       this.thumb.onclick = function () {
-         dest.style.width = "" + dest.parentNode.clientWidth + "px";
-         dest.style.height = "" + dest.parentNode.clientHeight + "px";
          dest.src = link;
       };
    }
