@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+<meta charset="utf-8">
+<title>Test</title>
+
+<style type="text/css">
+
+html , body {
+   margin:0px;
+   padding:0px;
+   border:0px;
+   width:100%;
+   height:100%;
+}
+
+body {
+   background-color: rgb(0,0,0);
+   background-image: url("");
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   background-size: cover;
+}
+
+p.message {
+   font-family: Baskerville Old Face;
+   font-size:28px;
+   text-align:left;
+   color:orange;
+}
+
+#thumb_prototype {
+   border:0px;
+   margin:0px;
+   padding:4px;
+
+   object-fit:scale-down;
+
+   max-width:128px;
+   max-height:128px;
+
+   background:yellow;
+}
+
+img.large {
+   border:0px;
+   padding:0px;
+   margin:0px;
+   position:relative;
+   left:5%;
+   top:5%;
+   width:90%;
+   height:90%;
+   object-fit:scale-down;
+   background:white;
+}
+
+#vouterdiv {
+   display:flex;
+   width:100%;
+   height:100%;
+}
+
+#houterdiv {
+   display:block;
+   width:100%;
+   height:100%;
+}
+
+#vthumbdiv {
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   background:blue;
+
+   width:15%;
+   height:100%;
+
+   display:block;
+
+   overflow-x:hidden;
+   overflow-y:scroll;
+}
+
+#vimagediv {
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   width:55%;
+   height:100%;
+
+   background:white;
+}
+
+#vtextdiv {
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   width:30%;
+   height:100%;
+
+   background:white;
+}
+
+
+
+
+#hthumbdiv {
+   display:flex;
+
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   background:blue;
+
+   height:15%;
+   width:100%;
+
+   white-space:nowrap;
+   overflow-x:scroll;
+   overflow-y:hidden;
+}
+
+#himagediv {
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   width:100%;
+   height:55%;
+
+   background:white;
+}
+
+#htextdiv {
+   margin:0px;
+   border:0px;
+   padding:0px;
+
+   width:100%;
+   height:30%;
+
+   overflow-y:scroll;
+
+   background:white;
+}
+
+</style>
+
+</head>
+   
+<body>
+      
+<img id="thumb_prototype" />
+
+<div id="houterdiv" >
+
+   <div id="hthumbdiv" >
+   </div>
+
+   <div id="himagediv">
+      <img class="large" id="hlarge_image" src="">
+   </div>
+
+   <div id="htextdiv" >
+      <p class="message">Vertical gallery setup<br/> tall aspect ratio</p>
+   </div>
+
+</div>
+
+<div id="vouterdiv">
+
+   <div id="vthumbdiv" >
+   </div>
+
+   <div id="vimagediv">
+      <img class="large" id="vlarge_image" src="">
+   </div>
+
+   <div id="vtextdiv" >
+      <p class="message">Horizontal gallery setup<br /> wide aspect ratio</p>
+   </div>
+
+</div>
+
+<script src="scripts/flex_gallery.js"></script>
+
+<script language="javascript" type="text/javascript">
+   "use strict";
+   <!-- proto is a place holder, it's only used to style the thumbnails -->
+   var proto = document.getElementById("thumb_prototype");
+
+   var newimg = proto.cloneNode(true);
+
+   proto.parentNode.removeChild(proto);
+
+   var hthumbs = document.getElementById("hthumbdiv");
+   var vthumbs = document.getElementById("vthumbdiv");
+
+   var gwide = new Gallery(newimg , vthumbs , document.getElementById("vlarge_image") , "may2018/files.txt" , true);
+   var gtall = new Gallery(newimg , hthumbs , document.getElementById("hlarge_image") , "may2018/files.txt" , false);
+
+   var h = getScrollBarHeight(hthumbs);
+   hthumbs.style.paddingBottom = "" + h + "px";
+   
+   var w = getScrollBarWidth(vthumbs);
+   vthumbs.style.paddingRight = "" + w + "px";
+
+   function setAspect(wide) {
+      var widegallery = document.getElementById("vouterdiv");
+      var tallgallery = document.getElementById("houterdiv");
+      if (wide) {
+         widegallery.style.display = "flex";
+         tallgallery.style.display = "none";
+      }
+      else {
+         widegallery.style.display = "none";
+         tallgallery.style.display = "block";
+      }
+   }
+
+   setAspect(true);
+
+   window.addEventListener("resize" , function(e) {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var wide = w/h;
+      if (wide > 1.0) {
+         setAspect(true);
+      }
+      else {
+         setAspect(false);
+      }
+      console.log("Aspect is " , wide);
+   });
+</script>
+
+</body>
+
+</html>
+
+
