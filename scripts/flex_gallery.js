@@ -19,8 +19,10 @@ class Thumb {
 
       if (vertical) {
          this.thumb.style.width = "100%";
+         this.thumb.style.height = "10%";
       } else {
          this.thumb.style.height = "100%";
+         this.thumb.style.width = "10%";
       }
 
       this.thumb.src = src;
@@ -36,20 +38,23 @@ class Thumb {
 
 class Gallery {
    
-   constructor(proto , thumb_div , image_div , image_list_file) {
+   constructor(proto , thumb_div , image_div , image_list_file , vertical_thumbs) {
+      
+      this.vertical = vertical_thumbs;
       this.proto = proto;
-      this.imagediv = undefined;
-      this.thumbdiv = undefined;
+      this.thumbdiv = thumb_div;
+      this.imagediv = image_div;
+
       this.image_list_text = [];
+
       this.image_files_full = [];
       this.image_files_large = [];
       this.image_files_small = [];
-      this.hthumbs = [];
-      this.vthumbs = [];
 
-      this.imagediv = image_div;
-      this.thumbdiv = thumb_div;
+      this.thumbs = [];
+
       this.setImageList(image_list_file);
+      
    }
 
    setImageList(path) {
@@ -95,11 +100,9 @@ class Gallery {
       for (var i in this.image_files_small) {
          var file = this.image_files_small[i];
          var lfile = this.image_files_large[i];
-         let hthumb = new Thumb(this.proto , file , this.imagediv , lfile , false);
-         let vthumb = new Thumb(this.proto , file , this.imagediv , lfile , true);
-         this.hthumbs[i] = hthumb;
-         this.vthumbs[i] = vthumb;
-         this.thumbdiv.appendChild(hthumb.getImage());
+         let thumb = new Thumb(this.proto , file , this.imagediv , lfile , this.vertical);
+         this.thumbs[i] = thumb;
+         this.thumbdiv.appendChild(thumb.getImage());
       }
    }
 };
