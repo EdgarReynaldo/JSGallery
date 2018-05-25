@@ -46,13 +46,16 @@
 			<Add directory="C:/ctwoplus/progcode/Eagle5GUI_GIT_BitBucket/Allegro5/lib" />
 		</Linker>
 		<Unit filename="csrc/dlist.cpp" />
+		<Unit filename="flex_gallery.html" />
 		<Unit filename="gallery.html" />
 		<Unit filename="jsgallery_tall.html" />
 		<Unit filename="jsgallery_wide.html" />
 		<Unit filename="may2018/petunias/petunias.txt" />
 		<Unit filename="may2018/roses/roses.txt" />
+		<Unit filename="scripts/flex_gallery.js" />
 		<Unit filename="scripts/gallery.js" />
 		<Unit filename="test.html" />
+		<Unit filename="vtest.html" />
 		<Extensions>
 			<code_completion />
 			<envvars />
