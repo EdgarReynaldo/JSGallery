@@ -19,10 +19,10 @@ class Thumb {
 
       if (vertical) {
          this.thumb.style.width = "100%";
-         this.thumb.style.height = "10%";
+         this.thumb.style.maxHeight = "128px";
       } else {
          this.thumb.style.height = "100%";
-         this.thumb.style.width = "10%";
+         this.thumb.style.maxWidth = "128px";
       }
 
       this.thumb.src = src;
