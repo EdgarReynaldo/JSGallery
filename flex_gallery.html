@@ -223,9 +223,7 @@ img.large {
       }
    }
 
-   setAspect(true);
-
-   window.addEventListener("resize" , function(e) {
+   function checkAspect(ev) {
       var w = window.innerWidth;
       var h = window.innerHeight;
       var wide = w/h;
@@ -235,8 +233,12 @@ img.large {
       else {
          setAspect(false);
       }
-      console.log("Aspect is " , wide);
-   });
+   }
+
+   checkAspect(null);
+
+   window.addEventListener("resize" , checkAspect);
+   
 </script>
 
 </body>
