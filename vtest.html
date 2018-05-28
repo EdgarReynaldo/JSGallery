@@ -55,17 +55,29 @@ img.large {
 }
 
 #outerdiv {
-   display:flex;
+   display:block;
    width:100%;
    height:100%;
+}
+
+#thumbdiv {
+   background:blue;
+   height:15%;
+   width:100%;
+   white-space:nowrap;
+   overflow-x:scroll;
+   overflow-y:hidden;
+   margin:0px;
+   border:0px;
+   padding:0px;
 }
 
 #imagediv {
    margin:0px;
    border:0px;
    padding:0px;
-   width:60%;
-   height:100%;
+   width:100%;
+   height:55%;
    background:white;
 }
 
@@ -73,21 +85,12 @@ img.large {
    margin:0px;
    border:0px;
    padding:0px;
-   width:30%;
-   height:100%;
+   width:100%;
+   height:30%;
+   overflow-y:scroll;
    background:white;
 }
 
-#thumbdiv {
-   background:blue;
-   width:10%;
-   height:100%;
-   overflow-x:hidden;
-   overflow-y:scroll;
-   margin:0px;
-   border:0px;
-   padding:0px;
-}
 
 </style>
 
@@ -125,11 +128,11 @@ img.large {
 
    var thumbs = document.getElementById("thumbdiv");
 
-   var g = new Gallery(newimg , thumbs , document.getElementById("large_image") , "may2018/files.txt" , true);
+   var g = new Gallery(newimg , thumbs , document.getElementById("large_image") , "may2018/files.txt" , false);
 
-   var w = getScrollbarWidth(thumbs);
-   thumbs.style.width = "" + (thumbs.clientWidth - w) + "px";
-   thumbs.style.paddingRight = "" + w + "px";
+   var h = getScrollBarHeight(thumbs);
+   thumbs.style.paddingBottom = h;
+
 </script>
 
 </body>

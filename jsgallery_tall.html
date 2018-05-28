@@ -100,13 +100,10 @@ img.large {
 
    var g = new Gallery(newimg , thumbs , document.getElementById("large_image") , "may2018/files.txt");
 
-   
    var w = getScrollbarWidth(thumbs);
-   thumbs.style.width = "" + (thumbs.clientWidth - w) + "px";
    thumbs.style.paddingRight = "" + w + "px";
 
    var imagediv = document.getElementById("imagediv");
-   imagediv.style.width = "" + (window.innerWidth - thumbs.offsetWidth - 50) + "px";
 
 </script>
 
